@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Account
+from .models import Accounts
 
-@admin.register(Account)
+
+@admin.register(Accounts)
 class AccountAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['email', 'name', 'address', 'phone_no', 'created_at', 'modified_at']

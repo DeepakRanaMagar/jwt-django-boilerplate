@@ -7,7 +7,7 @@ class CustomUserManager(BaseUserManager):
     '''
         Extending the BaseUserManager, for the custom use
     '''
-    def create_user(self, email, name, password=None, password2=None):
+    def create_user(self, email, name, password=None, password2=None, address=None, phone_no=None):
         '''
             To create a simple user account
         '''
@@ -18,7 +18,9 @@ class CustomUserManager(BaseUserManager):
         # create a user instance, using custom user model
         user = self.model(
             email = self.normalize_email(email),
-            name = name
+            name = name,
+            address = address,
+            phone_no = phone_no
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -41,7 +43,10 @@ class CustomUserManager(BaseUserManager):
 class Accounts(AbstractBaseUser):
     
     email = models.EmailField(verbose_name="email address",max_length=255,unique=True)
-    name=models.CharField(verbose_name="email address", max_length=255)
+    name=models.CharField(verbose_name="Full Name", max_length=255)
+    address = models.CharField(_("Address"), max_length=50, null=True)
+    phone_no = models.IntegerField(_("Phone Number"), unique=True, null=True)
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -49,7 +54,7 @@ class Accounts(AbstractBaseUser):
     
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name',]
+    REQUIRED_FIELDS = ['name']
 
     objects = CustomUserManager()
 
@@ -57,11 +62,11 @@ class Accounts(AbstractBaseUser):
     def __str__(self):
         return self.email
     
-    def has_perm(self,perm,obj=None):
+    def has_perm(self, perm ,obj=None):
         "Does the user have a specific permission?"
         return self.is_admin
     
-    def has_module_perms(self,app_label):
+    def has_module_perms(self, app_label):
         "Does the user have permissions to view the app `app_label`?"
         return True
     
@@ -69,3 +74,7 @@ class Accounts(AbstractBaseUser):
     def is_staff(self):
         "Is the user a member of staff?"
         return self.is_admin
+    
+    class Meta:
+        verbose_name = 'Account'
+        verbose_name_plural = 'Accounts'

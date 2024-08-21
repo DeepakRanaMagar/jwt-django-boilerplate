@@ -14,8 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 
 
-AUTH_USER_MODEL = 'accounts.Account'
-AUTHENTICATION_BACKENDS=["accounts.backend.EmailPhoneAuthenticationBackend"]
+AUTH_USER_MODEL = 'accounts.Accounts'
+# AUTHENTICATION_BACKENDS=["accounts.backend.EmailPhoneAuthenticationBackend"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
