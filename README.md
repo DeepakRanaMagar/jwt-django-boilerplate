@@ -1,6 +1,6 @@
 ## Django JWT Authentication with Custom User Model
 
-This repository provides an implementation of Django JWT authentication with a custom user model that includes email for authentication instead of username. It also includes fields for name, address, and phone number.
+This repository boilerplate implementation of Django JWT authentication with a custom user model that includes email for authentication instead of username. It also includes fields for name, address, and phone number.
 
 ### Installation
 
