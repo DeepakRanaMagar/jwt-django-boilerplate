@@ -7,7 +7,7 @@ This repository provides an implementation of Django JWT authentication with a c
 1. Clone the repository:
 
     ```shell
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/DeepakRanaMagar/jwt-django-tutorial.git
     ```
 
 2. Navigate to the project directory:
