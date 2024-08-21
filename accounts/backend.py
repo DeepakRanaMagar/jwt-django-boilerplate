@@ -14,8 +14,8 @@ class EmailPhoneAuthenticationBackend(object):
         except User.DoesNotExist:
             return None
         
-        if user and check_password(password, user.password)
-        return user
+        if user and check_password(password, user.password):
+            return user
     
     def get_user(self, user_id):
         try:
