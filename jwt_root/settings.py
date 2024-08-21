@@ -59,7 +59,11 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60)
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), #specifies how long the access tokens are valid
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1), #specifies how long sliding tokens are valid to be refreshed
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=30), #specifies how long sliding tokens are valid to prove authentication
+    'LATE_USER_REFRESH_LIFETIME': timedelta(days=1), #                        
+    'LATE_USER_LIFETIME': timedelta(days=30),
 }
 
 
